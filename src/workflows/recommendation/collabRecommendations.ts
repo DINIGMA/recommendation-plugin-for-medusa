@@ -118,7 +118,7 @@ export const getCollaborativeFiltering = createStep(
         }
       );
 
-      console.log(reviews.length);
+      // console.log(reviews.length);
 
       await cacheModuleService.set("collabRatings", matrices, 86400);
 

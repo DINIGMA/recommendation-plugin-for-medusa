@@ -104,7 +104,7 @@ type WorkflowInput = {
   productIds: string[];
 };
 
-const ONE_HOUR = 60 * 60 * 1000;
+// const ONE_HOUR = 60 * 60 * 1000;
 
 export const getContentRecommendation = createStep(
   "get-product-list",
@@ -123,7 +123,7 @@ export const getContentRecommendation = createStep(
         { relations: ["categories"] }
       );
 
-      console.time("computedTfidf");
+      // console.time("computedTfidf");
       const texts = fetchedProducts.map((product) => {
         const title = product.title.toLowerCase();
         const description = product.description?.toLowerCase();
@@ -145,7 +145,7 @@ export const getContentRecommendation = createStep(
       tfidfVectors = computedTfidf(texts);
       console.log(texts.length);
       console.log(fetchedProducts.length);
-      console.timeEnd("computedTfidf");
+      // console.timeEnd("computedTfidf");
       // Преобразуем Map в объект, чтобы сохранить в кэш Redis не поддерживает Map
       const serializableMatrix = tfidfVectors.matrix.map((map) =>
         Object.fromEntries(map)
